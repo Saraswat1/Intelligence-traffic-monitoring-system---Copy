@@ -1,0 +1,268 @@
+[
+  {
+    "name": "John Doe",
+    "vehicleNumber": "WB12AB1234",
+    "fineAmount": 500,
+    "selectedViolation": "Over Speeding",
+    "date": "2025-03-08T12:00:00Z"
+  },
+  {
+    "name": "Alice Smith",
+    "vehicleNumber": "DL10CD5678",
+    "fineAmount": 1000,
+    "selectedViolation": "Signal Jumping",
+    "date": "2025-03-08T12:15:30Z"
+  },
+  {
+    "name": "souvik",
+    "vehicleNumber": "AA11BB2223",
+    "fineAmount": 5000,
+    "selectedViolation": "Drunk Driving",
+    "date": "2025-03-08T14:48:55.895Z"
+  },
+  {
+    "name": "ANKAN BASAK",
+    "vehicleNumber": "AA11BB2222",
+    "fineAmount": 1000,
+    "selectedViolation": "Signal Jumping",
+    "date": "2025-03-08T14:51:18.911Z"
+  },
+  {
+    "name": "Saraswat Chakraborty",
+    "vehicleNumber": "AA11BB2224",
+    "fineAmount": 1000,
+    "selectedViolation": "Signal Jumping",
+    "date": "2025-03-08T14:52:35.326Z"
+  },
+  {
+    "name": "Saraswat Chakraborty",
+    "vehicleNumber": "AA11BB2224",
+    "fineAmount": 500,
+    "selectedViolation": "Over Speeding",
+    "date": "2025-03-08T14:54:07.606Z"
+  },
+  {
+    "name": "ANKAN BASAK",
+    "vehicleNumber": "AA11BB2222",
+    "fineAmount": 5000,
+    "selectedViolation": "Driving in NMV lanes/No entry/One-way roads",
+    "date": "2025-03-08T14:55:13.318Z"
+  },
+  {
+    "name": "Saraswat Chakraborty",
+    "vehicleNumber": "AA11BB2224",
+    "fineAmount": 5000,
+    "selectedViolation": "Driving in NMV lanes/No entry/One-way roads",
+    "date": "2025-03-08T15:59:55.451Z"
+  },
+  {
+    "name": "ANKAN BASAK",
+    "vehicleNumber": "AA11BB2222",
+    "fineAmount": 5000,
+    "selectedViolation": "Drunk Driving",
+    "date": "2025-03-08T16:02:57.955Z"
+  },
+  {
+    "name": "souvik",
+    "vehicleNumber": "AA11BB2223",
+    "fineAmount": 300,
+    "selectedViolation": "No Seatbelt",
+    "date": "2025-03-08T16:46:19.624Z"
+  },
+  {
+    "name": "souvik",
+    "vehicleNumber": "AA11BB2223",
+    "fineAmount": 300,
+    "selectedViolation": "No Seatbelt",
+    "date": "2025-03-08T18:04:34.061Z"
+  },
+  {
+    "name": "souvik",
+    "vehicleNumber": "AA11BB2223",
+    "fineAmount": 5000,
+    "selectedViolation": "Driving in NMV lanes/No entry/One-way roads",
+    "date": "2025-03-08T18:54:40.597Z"
+  },
+  {
+    "name": "souvik",
+    "vehicleNumber": "AA11BB2223",
+    "fineAmount": 500,
+    "selectedViolation": "Over Speeding",
+    "date": "2025-03-11T17:51:53.309Z"
+  },
+  {
+    "name": "ANKAN BASAK",
+    "vehicleNumber": "AA11BB2222",
+    "fineAmount": 5000,
+    "selectedViolation": "Driving in NMV lanes/No entry/One-way roads",
+    "date": "2025-03-11T17:52:28.469Z"
+  },
+  {
+    "name": "Saraswat Chakraborty",
+    "vehicleNumber": "AA11BB2224",
+    "fineAmount": 5000,
+    "selectedViolation": "Drunk Driving",
+    "date": "2025-03-11T17:52:42.413Z"
+  },
+  {
+    "name": "ANKAN BASAK",
+    "vehicleNumber": "AA11BB2222",
+    "fineAmount": 300,
+    "selectedViolation": "No Seatbelt",
+    "date": "2025-03-11T18:33:19.671Z"
+  },
+  {
+    "name": "souvik",
+    "vehicleNumber": "AA11BB2223",
+    "fineAmount": 1000,
+    "selectedViolation": "Driving Dangerously",
+    "date": "2025-03-11T18:34:06.970Z"
+  },
+  {
+    "name": "Saraswat Chakraborty",
+    "vehicleNumber": "AA11BB2224",
+    "fineAmount": 5000,
+    "selectedViolation": "Driving in NMV lanes/No entry/One-way roads",
+    "date": "2025-03-11T18:35:25.249Z"
+  },
+  {
+    "name": "Saraswat Chakraborty",
+    "vehicleNumber": "AA11BB2224",
+    "fineAmount": 300,
+    "selectedViolation": "No Seatbelt",
+    "date": "2025-03-11T18:36:14.721Z"
+  },
+  {
+    "name": "ANKAN BASAK",
+    "vehicleNumber": "AA11BB2222",
+    "fineAmount": 500,
+    "selectedViolation": "Over Speeding",
+    "date": "2025-03-11T18:36:44.993Z"
+  },
+  {
+    "name": "ANKAN BASAK",
+    "vehicleNumber": "AA11BB2222",
+    "fineAmount": 300,
+    "selectedViolation": "No Seatbelt",
+    "date": "2025-03-11T18:37:31.378Z"
+  },
+  {
+    "name": "Saraswat Chakraborty",
+    "vehicleNumber": "AA11BB2224",
+    "fineAmount": 5000,
+    "selectedViolation": "Driving in NMV lanes/No entry/One-way roads",
+    "date": "2025-03-11T18:37:54.841Z"
+  },
+  {
+    "name": "souvik",
+    "vehicleNumber": "AA11BB2223",
+    "fineAmount": 300,
+    "selectedViolation": "No Seatbelt",
+    "date": "2025-03-11T18:44:16.615Z"
+  },
+  {
+    "name": "Saraswat Chakraborty",
+    "vehicleNumber": "AA11BB2224",
+    "fineAmount": 1000,
+    "selectedViolation": "Signal Jumping",
+    "date": "2025-03-11T18:44:30.807Z"
+  },
+  {
+    "name": "ANKAN BASAK",
+    "vehicleNumber": "AA11BB2222",
+    "fineAmount": 500,
+    "selectedViolation": "Over Speeding",
+    "date": "2025-03-11T18:44:51.647Z"
+  },
+  {
+    "name": "ANKAN BASAK",
+    "vehicleNumber": "AA11BB2222",
+    "fineAmount": 1000,
+    "selectedViolation": "Signal Jumping",
+    "date": "2025-03-11T19:16:05.348Z"
+  },
+  {
+    "name": "ANKAN BASAK",
+    "vehicleNumber": "AA11BB2222",
+    "fineAmount": 1000,
+    "selectedViolation": "Signal Jumping",
+    "date": "2025-03-11T19:16:06.976Z"
+  },
+  {
+    "name": "ANKAN BASAK",
+    "vehicleNumber": "AA11BB2222",
+    "fineAmount": 1000,
+    "selectedViolation": "Signal Jumping",
+    "date": "2025-03-12T19:05:50.014Z"
+  },
+  {
+    "name": "ANKAN BASAK",
+    "vehicleNumber": "AA11BB2222",
+    "fineAmount": 1000,
+    "selectedViolation": "Signal Jumping",
+    "date": "2025-03-12T19:05:51.262Z"
+  },
+  {
+    "name": "souvik",
+    "vehicleNumber": "AA11BB2223",
+    "fineAmount": 500,
+    "selectedViolation": "Over Speeding",
+    "date": "2025-03-12T19:06:04.669Z"
+  },
+  {
+    "name": "Saraswat Chakraborty",
+    "vehicleNumber": "AA11BB2224",
+    "fineAmount": 1000,
+    "selectedViolation": "Driving Dangerously",
+    "date": "2025-03-12T19:06:18.229Z"
+  },
+  {
+    "name": "souvik",
+    "vehicleNumber": "AA11BB2223",
+    "fineAmount": 1000,
+    "selectedViolation": "Signal Jumping",
+    "date": "2025-03-16T20:44:23.088Z"
+  },
+  {
+    "name": "souvik",
+    "vehicleNumber": "AA11BB2223",
+    "fineAmount": 500,
+    "selectedViolation": "Driving without indicator",
+    "date": "2025-03-18T05:15:52.451Z"
+  },
+  {
+    "name": "souvik",
+    "vehicleNumber": "AA11BB2223",
+    "fineAmount": 500,
+    "selectedViolation": "Over Speeding",
+    "date": "2025-03-18T05:16:31.798Z"
+  },
+  {
+    "name": "Saraswat Chakraborty",
+    "vehicleNumber": "AA11BB2224",
+    "fineAmount": 5000,
+    "selectedViolation": "Drunk Driving",
+    "date": "2025-03-19T08:12:30.791Z"
+  },
+  {
+    "name": "Saraswat Chakraborty",
+    "vehicleNumber": "AA11BB2224",
+    "fineAmount": 5000,
+    "selectedViolation": "Drunk Driving",
+    "date": "2025-03-19T08:12:31.703Z"
+  },
+  {
+    "name": "souvik",
+    "vehicleNumber": "AA11BB2223",
+    "fineAmount": 500,
+    "selectedViolation": "Over Speeding",
+    "date": "2025-03-26T17:44:05.151Z"
+  },
+  {
+    "name": "Saraswat Chakraborty",
+    "vehicleNumber": "AA11BB2224",
+    "fineAmount": 300,
+    "selectedViolation": "No Seatbelt",
+    "date": "2025-03-26T17:53:47.968Z"
+  }
+]

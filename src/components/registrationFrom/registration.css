@@ -1,0 +1,135 @@
+.testbox {
+    margin: 0 auto;
+    width: 450px;
+    padding: 20px;
+    border-radius: 8px;
+    background-color: #ebebeb;
+    box-shadow: 1px 2px 5px rgba(0, 0, 0, 0.31);
+    border: solid 1px #cbc9c9;
+    position: relative;
+    top: 10vh;
+    text-align: center;
+}
+
+.heading {
+    text-align: center;
+    margin-bottom: 15px;
+    font-size: 22px;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+input {
+    height: 39px;
+    width: 90%;
+    border-radius: 10px;
+    margin: 8px 0;
+    padding-left: 10px;
+    border: 1px solid #ccc;
+    box-shadow: 1px 2px 5px rgba(0, 0, 0, 0.15);
+}
+
+input:focus {
+    outline: none;
+    border-color: #50A550;
+    box-shadow: 0 0 8px rgba(80, 165, 80, 0.5);
+}
+
+hr {
+    width: 90%;
+    border: none;
+    height: 1px;
+    background: #ccc;
+    margin-bottom: 15px;
+}
+
+.button1 {
+    background-color: #50A550;
+    color: white;
+    border: none;
+    height: 39px;
+    width: 90%;
+    border-radius: 10px;
+    margin: 10px 0;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    box-shadow: 1px 2px 5px rgba(0, 0, 0, 0.31);
+    transition: background-color 0.3s;
+}
+
+.button1:hover {
+    background-color: #89d489;
+}
+.vehicle-info {
+    max-width: 600px;
+    margin: 20px auto;
+    overflow-x: auto;
+}
+
+.search-section, 
+.form-container {
+    max-width: 500px;
+    margin: 20px auto;
+}
+.container {
+    max-width: 800px;
+    margin: 20px auto;
+    padding: 20px;
+    font-family: Arial, sans-serif;
+}
+
+.search-section, .form-container {
+    background: rgb(230, 207, 207);
+    padding: 20px;
+    margin: 20px 0;
+    border-radius: 8px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+input {
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+button {
+    width: 100%;
+    padding: 10px;
+    background: #2185d0;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+button:hover {
+    background: #1a65a8;
+}
+
+.vehicle-info {
+    max-width: 500px;
+    margin: 20px auto;
+    padding: 20px;
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.vehicle-info table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.vehicle-info td {
+    padding: 10px;
+    border: 1px solid #cd9898;
+}
+
+

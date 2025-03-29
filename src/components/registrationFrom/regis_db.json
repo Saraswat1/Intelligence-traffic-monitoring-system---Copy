@@ -1,0 +1,38 @@
+[
+  {
+    "vehicleNumber": "WB11BB2222",
+    "name": "Saraswat Chakraborty",
+    "phone": "+916296287381",
+    "address": "KOLKATA",
+    "isMissing": "No",
+    "missingLocation": "",
+    "model": "Verna Sportz"
+  },
+  {
+    "vehicleNumber": "WB20CC5000",
+    "name": "SOUVIK MONDOL ",
+    "phone": "434331313",
+    "address": "DGDHDGHGH",
+    "isMissing": "Yes",
+    "missingLocation": "",
+    "model": "AUDI"
+  },
+  {
+    "vehicleNumber": "WB22BB5000",
+    "name": "SOUVIK",
+    "phone": "54564346",
+    "address": "TBY",
+    "isMissing": "No",
+    "missingLocation": "",
+    "model": "BMW"
+  },
+  {
+    "vehicleNumber": "WB50BB5000",
+    "name": "ABHIGYAN ",
+    "phone": "4654654654",
+    "address": "FEGFCRNHCMHJ",
+    "isMissing": "No",
+    "missingLocation": "",
+    "model": "BMW"
+  }
+]

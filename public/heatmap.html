@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Accident Mapping System</title>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <style>
+    #map { height: 100%; }
+    html, body { height: 100%; margin: 0; padding: 0; }
+    #form-container, #stats-container, #records-container {
+      position: absolute;
+      top: 20px;
+      background: white;
+      padding: 10px;
+      z-index: 10;
+      border: 1px solid black;
+      display: none;
+    }
+    #form-container { left: 50px; }
+    #stats-container { right: 50px; width: 350px; }
+    #records-container { right: 420px; width: 350px; }
+    .close-btn {
+      position: absolute;
+      top: 5px;
+      right: 5px;
+      cursor: pointer;
+      background: red;
+      color: white;
+      border: none;
+      padding: 3px 6px;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+
+  <div id="map"></div>
+
+  <!-- Report Accident Form -->
+  <div id="form-container">
+    <button class="close-btn" onclick="closePopup('form-container')">X</button>
+    <h3>Report Accident</h3>
+    <label>Latitude:</label>
+    <input type="text" id="lat" readonly><br>
+    
+    <label>Longitude:</label>
+    <input type="text" id="lng" readonly><br>
+    
+    <label>Vehicle Number:</label>
+    <input type="text" id="vehicleNumber" placeholder="Enter vehicle number"><br>
+    
+    <label>Vehicle Type:</label>
+    <select id="vehicleType">
+      <option value="Car">Car</option>
+      <option value="Bike">Bike</option>
+    </select><br>
+    
+    <label>Description:</label>
+    <input type="text" id="description" placeholder="Enter accident details"><br>
+    
+    <button onclick="saveAccident()">Save</button>
+  </div>
+
+  <!-- Accident Statistics (With Graphs) -->
+  <div id="stats-container">
+    <button class="close-btn" onclick="closePopup('stats-container')">X</button>
+    <h3>Accident Statistics</h3>
+    <p>Total Accidents: <span id="totalAccidents">0</span></p>
+    <p>Cars: <span id="carCount">0</span></p>
+    <p>Bikes: <span id="bikeCount">0</span></p>
+    <canvas id="accidentChart"></canvas>
+  </div>
+
+  <!-- Accident Records with Time & Location -->
+  <div id="records-container">
+    <button class="close-btn" onclick="closePopup('records-container')">X</button>
+    <h3>Accident Records</h3>
+    <ul id="accidentList"></ul>
+  </div>
+
+  <script>
+    let map;
+    let accidentData = [];
+    let accidentChart;  // Chart instance
+    let ambulanceIcon = "https://cdn-icons-png.flaticon.com/128/2966/2966327.png";
+
+    function initMap() {
+      map = new google.maps.Map(document.getElementById('map'), {
+        zoom: 15,
+        center: { lat: 22.578575, lng: 88.471774 }
+      });
+
+      map.addListener('click', function(event) {
+        document.getElementById('lat').value = event.latLng.lat();
+        document.getElementById('lng').value = event.latLng.lng();
+        document.getElementById('form-container').style.display = 'block';
+      });
+    }
+
+    function saveAccident() {
+      let dateTime = new Date();
+      let timeString = dateTime.toLocaleTimeString();
+      const data = {
+        latitude: document.getElementById('lat').value,
+        longitude: document.getElementById('lng').value,
+        vehicleNumber: document.getElementById('vehicleNumber').value,
+        vehicleType: document.getElementById('vehicleType').value,
+        description: document.getElementById('description').value,
+        time: timeString
+      };
+
+      fetch('http://localhost:9000/saveAccident', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(data)
+      })
+      .then(response => response.json())
+      .then(result => {
+        console.log("Success:", result);
+        alert('Accident reported successfully! 🚑');
+
+        new google.maps.Marker({
+          position: { lat: parseFloat(data.latitude), lng: parseFloat(data.longitude) },
+          map: map,
+          icon: { url: ambulanceIcon, scaledSize: new google.maps.Size(50, 50) }
+        });
+
+        document.getElementById('form-container').style.display = 'none';
+        updateAccidentData(data);
+      })
+      .catch(error => console.error("Error:", error));
+    }
+
+    function updateAccidentData(data) {
+      accidentData.push(data);
+
+      let totalAccidents = accidentData.length;
+      let carCount = accidentData.filter(a => a.vehicleType === "Car").length;
+      let bikeCount = accidentData.filter(a => a.vehicleType === "Bike").length;
+
+      document.getElementById('totalAccidents').innerText = totalAccidents;
+      document.getElementById('carCount').innerText = carCount;
+      document.getElementById('bikeCount').innerText = bikeCount;
+
+      let accidentList = document.getElementById('accidentList');
+      let listItem = document.createElement('li');
+      listItem.innerText = `#${totalAccidents}: ${data.vehicleNumber} (${data.vehicleType}) at [${data.latitude}, ${data.longitude}] - ${data.description} - Time: ${data.time}`;
+      accidentList.appendChild(listItem);
+
+      document.getElementById('stats-container').style.display = 'block';
+      document.getElementById('records-container').style.display = 'block';
+
+      drawChart();
+    }
+
+    function drawChart() {
+      let ctx = document.getElementById('accidentChart').getContext('2d');
+
+      if (accidentChart) {
+        accidentChart.destroy(); // Destroy previous chart instance to prevent duplicates
+      }
+
+      let accidentLocations = accidentData.map((accident, index) => ({
+        x: parseFloat(accident.latitude),
+        y: parseFloat(accident.longitude),
+        label: `Accident #${index + 1}`
+      }));
+
+      accidentChart = new Chart(ctx, {
+        type: 'scatter',
+        data: {
+          datasets: [{
+            label: 'Accident Locations',
+            data: accidentLocations,
+            backgroundColor: 'red',
+            pointRadius: 5
+          }]
+        },
+        options: {
+          scales: {
+            x: { title: { display: true, text: 'Latitude' } },
+            y: { title: { display: true, text: 'Longitude' } }
+          }
+        }
+      });
+    }
+
+    function closePopup(id) {
+      document.getElementById(id).style.display = 'none';
+    }
+  </script>
+
+  <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC1284LqMEkGiE_0y_sedUm85eQt7TFVOE&callback=initMap"></script>
+
+</body>
+</html>

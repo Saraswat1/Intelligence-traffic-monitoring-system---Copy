@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Green Corridor Traffic Control</title>
+    <link rel="stylesheet" href="https://api.mapbox.com/mapbox-gl-js/v2.11.0/mapbox-gl.css">
+    <script src="https://api.mapbox.com/mapbox-gl-js/v2.11.0/mapbox-gl.js"></script>
+    <style>
+        body, html {
+            height: 100%;
+            margin: 0;
+            font-family: Arial, sans-serif;
+        }
+        #map {
+            width: 100%;
+            height: 90vh;
+        }
+        .controls {
+            padding: 10px;
+            background: white;
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            z-index: 1000;
+            box-shadow: 0 0 5px rgba(0,0,0,0.3);
+            border-radius: 5px;
+        }
+        button {
+            display: block;
+            width: 200px;
+            margin: 5px 0;
+            padding: 10px;
+            cursor: pointer;
+            background: #007AFF;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+        button:hover {
+            background: #005FCC;
+        }
+    </style>
+</head>
+<body>
+
+    <div id="map"></div>
+
+    <div class="controls">
+        <button onclick="enableOriginSelection()">Set Origin</button>
+        <button onclick="enableDestinationSelection()">Set Destination</button>
+        <button onclick="calculateRoute()">Go!</button>
+    </div>
+
+    <script>
+        mapboxgl.accessToken = "pk.eyJ1IjoiYWxlY2tyZXRjaCIsImEiOiJjajFmNGNkcTkwMGEwMndwM2FjNHY2cHJkIn0.t0Qakhusiu9vM3RADzORxA ";  
+
+        let map = new mapboxgl.Map({
+            container: 'map',
+            style: 'mapbox://styles/mapbox/streets-v11',
+            center: [88.47178733659439, 22.57866883249575], // Chandigarh, India
+            zoom: 14
+        });
+
+        let origin = null;
+        let destination = null;
+        let originMarker = null;
+        let destinationMarker = null;
+        let selectingOrigin = false;
+        let selectingDestination = false;
+
+        function enableOriginSelection() {
+            alert("Click on the map to set the origin.");
+            selectingOrigin = true;
+            selectingDestination = false;
+        }
+
+        function enableDestinationSelection() {
+            alert("Click on the map to set the destination.");
+            selectingDestination = true;
+            selectingOrigin = false;
+        }
+
+        map.on('click', function(e) {
+            if (selectingOrigin) {
+                if (originMarker) originMarker.remove();
+                origin = [e.lngLat.lng, e.lngLat.lat];
+
+                originMarker = new mapboxgl.Marker({ color: "blue" })
+                    .setLngLat(origin)
+                    .addTo(map);
+
+                alert(`Origin set at: ${origin[0]}, ${origin[1]}`);
+                selectingOrigin = false;
+            } else if (selectingDestination) {
+                if (destinationMarker) destinationMarker.remove();
+                destination = [e.lngLat.lng, e.lngLat.lat];
+
+                destinationMarker = new mapboxgl.Marker({ color: "red" })
+                    .setLngLat(destination)
+                    .addTo(map);
+
+                alert(`Destination set at: ${destination[0]}, ${destination[1]}`);
+                selectingDestination = false;
+            }
+        });
+
+        function calculateRoute() {
+            if (!origin || !destination) {
+                alert("Please set both origin and destination before clicking 'Go!'");
+                return;
+            }
+
+            fetch(`https://api.mapbox.com/directions/v5/mapbox/driving/${origin[0]},${origin[1]};${destination[0]},${destination[1]}?geometries=geojson&access_token=${mapboxgl.accessToken}`)
+            .then(response => response.json())
+            .then(data => {
+                const route = data.routes[0].geometry;
+
+                if (map.getSource('route')) {
+                    map.removeLayer('route-layer');
+                    map.removeSource('route');
+                }
+
+                map.addSource('route', {
+                    type: 'geojson',
+                    data: {
+                        type: 'Feature',
+                        properties: {},
+                        geometry: route
+                    }
+                });
+
+                map.addLayer({
+                    id: 'route-layer',
+                    type: 'line',
+                    source: 'route',
+                    layout: {
+                        'line-join': 'round',
+                        'line-cap': 'round'
+                    },
+                    paint: {
+                        'line-color': '#00FF00',
+                        'line-width': 6
+                    }
+                });
+
+                alert("Route created successfully! Traffic lights will turn green.");
+            })
+            .catch(error => console.error('Error fetching route:', error));
+        }
+    </script>
+
+</body>
+</html>
